@@ -1,0 +1,24 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "notes-vault-mcp"
+version = "0.1.0"
+description = "MCP server for storing and full-text searching notes (SQLite FTS5)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["mcp[cli]>=1.2,<2"]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+notes-vault-mcp = "notes_vault.server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/notes_vault"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
